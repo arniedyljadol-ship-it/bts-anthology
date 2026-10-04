@@ -4,19 +4,514 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BTS (방탄소년단) — Beyond The Scene</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Google Fonts -->
+  
+  <!-- Premium Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================
+       LUXURY BTS PURPLE DESIGN SYSTEM
+    ========================================================= */
+    :root {
+      --bg-dark: #07040d;
+      --bg-surface: #0f0a1c;
+      --bg-card: rgba(22, 14, 38, 0.7);
+      --purple-primary: #a855f7;
+      --purple-vibrant: #9333ea;
+      --purple-light: #d8b4fe;
+      --gold-accent: #f59e0b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-glow: rgba(168, 85, 247, 0.25);
+      --font-display: 'Cinzel', serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.7;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(147, 51, 234, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.12) 0px, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    /* Ambient Background Orbs */
+    .ambient-glow-1 {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, rgba(0,0,0,0) 70%);
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(80px);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 4, 13, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-glow);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand span {
+      font-size: 0.85rem;
+      color: var(--purple-light);
+      font-family: var(--font-sans);
+      font-weight: 500;
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-menu a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-menu a:hover {
+      color: var(--purple-light);
+      text-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 7rem 1.5rem 6rem;
+      overflow: hidden;
+    }
+
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(168, 85, 247, 0.1);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--purple-light);
+      margin-bottom: 1.8rem;
+      box-shadow: 0 0 20px rgba(147, 51, 234, 0.2);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #ffffff 20%, #e9d5ff 60%, #a855f7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 20px rgba(168, 85, 247, 0.3));
+    }
+
+    .hero-desc {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 2.5rem;
+      font-weight: 400;
+    }
+
+    .btn-glow {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(135deg, #9333ea, #7c3aed);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 50px;
+      box-shadow: 0 10px 30px rgba(147, 51, 234, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-glow:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(147, 51, 234, 0.7);
+    }
+
+    /* Section Headings */
+    .section-wrap {
+      padding: 5rem 0;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: var(--purple-primary);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .section-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      color: #fff;
+    }
+
+    /* Cards Grid */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .glass-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: 20px;
+      padding: 2.2rem;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--purple-primary), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(168, 85, 247, 0.6);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(147, 51, 234, 0.15);
+    }
+
+    .glass-card:hover::before {
+      opacity: 1;
+    }
+
+    .card-symbol {
+      width: 54px;
+      height: 54px;
+      background: rgba(168, 85, 247, 0.15);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .glass-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+
+    .glass-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* History Timeline */
+    .timeline {
+      position: relative;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 20px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--purple-vibrant), transparent);
+    }
+
+    @media (min-width: 768px) {
+      .timeline::before {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      top: 24px;
+      left: 20px;
+      width: 14px;
+      height: 14px;
+      background: var(--purple-light);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 15px var(--purple-primary);
+      z-index: 2;
+    }
+
+    @media (min-width: 768px) {
+      .timeline-dot {
+        left: 50%;
+      }
+    }
+
+    .timeline-panel {
+      margin-left: 50px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: 18px;
+      padding: 1.8rem;
+      backdrop-filter: blur(12px);
+    }
+
+    @media (min-width: 768px) {
+      .timeline-panel {
+        width: 44%;
+        margin-left: 0;
+      }
+      .timeline-item:nth-child(even) .timeline-panel {
+        margin-left: auto;
+      }
+    }
+
+    .timeline-year {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: var(--purple-light);
+      background: rgba(168, 85, 247, 0.15);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      padding: 3px 12px;
+      border-radius: 20px;
+      margin-bottom: 0.8rem;
+    }
+
+    .timeline-panel h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+
+    .timeline-panel p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    /* Accolade Counters */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .stat-box {
+      background: linear-gradient(135deg, rgba(22, 14, 38, 0.9), rgba(15, 10, 28, 0.9));
+      border: 1px solid var(--border-glow);
+      padding: 2rem 1.5rem;
+      border-radius: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, #fff, var(--purple-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Members Grid */
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .member-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: 18px;
+      padding: 1.8rem;
+      text-align: center;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .member-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--purple-primary);
+      box-shadow: 0 10px 30px rgba(147, 51, 234, 0.2);
+    }
+
+    .member-avatar {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 1.2rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple-vibrant), #3b0764);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      border: 2px solid var(--purple-light);
+      box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+    }
+
+    .member-card h3 {
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 0.2rem;
+    }
+
+    .member-realname {
+      font-size: 0.85rem;
+      color: var(--purple-light);
+      margin-bottom: 0.6rem;
+      font-weight: 500;
+    }
+
+    .member-role {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border-glow);
+      padding: 4rem 1.5rem;
+      text-align: center;
+      background: rgba(7, 4, 13, 0.95);
+      margin-top: 5rem;
+    }
+
+    .borahae-text {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--purple-light);
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    .copyright {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-menu { display: none; }
+      .hero { padding: 4.5rem 1rem 3.5rem; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Background Effect -->
+  <div class="ambient-glow-1"></div>
+
+  <!-- Navbar -->
   <header class="navbar">
-    <div class="nav-container">
-      <a href="#hero" class="nav-logo">BTS <span>방탄소년단</span></a>
-      <ul class="nav-links">
+    <div class="nav-inner">
+      <a href="#hero" class="brand">BTS <span>방탄소년단</span></a>
+      <ul class="nav-menu">
         <li><a href="#background">Background</a></li>
         <li><a href="#history">History</a></li>
         <li><a href="#achievements">Achievements</a></li>
@@ -26,185 +521,221 @@
   </header>
 
   <!-- Hero Section -->
-  <section id="hero" class="hero-section">
-    <div class="hero-badge">💜 21st Century Pop Icons</div>
-    <h1 class="hero-title">Beyond The Scene</h1>
-    <p class="hero-subtitle">
-      From humble beginnings in 2013 to becoming global icons, BTS has redefined music, unity, and self-love for millions around the world.
-    </p>
-    <a href="#history" class="btn-primary">Explore Their Journey</a>
-  </section>
+  <main>
+    <section id="hero" class="hero">
+      <div class="pill-badge">💜 21st Century Pop Icons</div>
+      <h1 class="hero-title">Beyond The Scene</h1>
+      <p class="hero-desc">
+        From a small room in 2013 to stadium tours worldwide. BTS redefined music, youth identity, and self-love for millions across the globe.
+      </p>
+      <a href="#history" class="btn-glow">Explore Their Journey</a>
+    </section>
 
-  <!-- Background Section -->
-  <section id="background" class="content-section">
-    <div class="section-header">
-      <span class="section-tag">Origins</span>
-      <h2>Group Background</h2>
-    </div>
-    <div class="cards-grid">
-      <div class="info-card">
-        <div class="card-icon">🎙️</div>
-        <h3>The Name & Meaning</h3>
-        <p>
-          <strong>Bangtan Sonyeondan</strong> translates to <em>"Bulletproof Boy Scouts."</em> The name signifies blocking out the stereotypes, criticisms, and unreasonable expectations aimed at young people like bullets. In 2017, they expanded the acronym to mean <strong>"Beyond The Scene"</strong>, symbolizing youth moving forward into the future.
-        </p>
-      </div>
+    <!-- Group Background -->
+    <section id="background" class="section-wrap">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Identity & Message</span>
+          <h2>Group Background</h2>
+        </div>
+        
+        <div class="grid-3">
+          <div class="glass-card">
+            <div class="card-icon">🛡️</div>
+            <h3>Bulletproof Origin</h3>
+            <p>
+              Originally named <strong>Bangtan Sonyeondan</strong> (Bulletproof Boy Scouts), the group set out to shield youth against prejudice, criticism, and social expectations aimed at them like bullets. In 2017, they introduced their extended English brand, <strong>Beyond The Scene</strong>.
+            </p>
+          </div>
 
-      <div class="info-card">
-        <div class="card-icon">✍️</div>
-        <h3>Artistic Philosophy</h3>
-        <p>
-          Formed by Big Hit Entertainment under producer Bang Si-hyuk, BTS distinguished themselves from the start by actively writing, composing, and producing their own music. Their discography tackles mental health, youth struggles, socio-economic pressures, and self-acceptance.
-        </p>
-      </div>
+          <div class="glass-card">
+            <div class="card-icon">✍️</div>
+            <h3>Direct Artistry</h3>
+            <p>
+              Unlike standard commercial acts, BTS members co-write and self-produce their songs. They candidly address mental health, youth hardships, socio-economic divides, self-acceptance, and the philosophical search for purpose.
+            </p>
+          </div>
 
-      <div class="info-card">
-        <div class="card-icon">🌍</div>
-        <h3>Global Message: Self-Love</h3>
-        <p>
-          BTS spearheaded the worldwide <strong>#LoveMyself</strong> campaign in collaboration with UNICEF. In 2018, RM delivered an address at the United Nations General Assembly, urging youth everywhere to <em>"Speak Yourself,"</em> regardless of who you are or where you come from.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- History / Eras Section -->
-  <section id="history" class="content-section dark-alt">
-    <div class="section-header">
-      <span class="section-tag">Milestones</span>
-      <h2>Chronological History</h2>
-    </div>
-    
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">2013</div>
-        <div class="timeline-content">
-          <h3>Debut & School Trilogy</h3>
-          <p>Debuted on June 13, 2013, with single album <em>2 Cool 4 Skool</em> and title track <em>"No More Dream"</em>. Songs in this era critiqued intense educational pressure placed on youth in South Korea.</p>
+          <div class="glass-card">
+            <div class="card-icon">🕊️</div>
+            <h3>Speak Yourself</h3>
+            <p>
+              Collaborating with UNICEF for the global <strong>#LoveMyself</strong> campaign, BTS spoke at the United Nations General Assembly, urging youth everywhere to celebrate their identity and speak their truth regardless of origin.
+            </p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="timeline-item">
-        <div class="timeline-date">2015 – 2016</div>
-        <div class="timeline-content">
-          <h3>The Most Beautiful Moment in Life (HYYH) & Wings</h3>
-          <p>BTS earned their first music show win with <em>"I Need U"</em>. Later, their 2016 album <em>Wings</em> and title track <em>"Blood Sweat & Tears"</em> brought mainstream international recognition, entering the Billboard 200 at #26.</p>
+    <!-- History / Eras Timeline -->
+    <section id="history" class="section-wrap">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">The Evolution</span>
+          <h2>Milestones & Eras</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-panel">
+              <span class="timeline-year">2013 — 2014</span>
+              <h3>Debut & School Trilogy</h3>
+              <p>Debuted on June 13, 2013, with <em>2 Cool 4 Skool</em>. Their raw hip-hop tracks like <em>"No More Dream"</em> and <em>"N.O"</em> confronted the immense educational pressure placed on teenagers.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-panel">
+              <span class="timeline-year">2015 — 2016</span>
+              <h3>The Most Beautiful Moment in Life & Wings</h3>
+              <p>Achieved their first music show win with <em>"I Need U"</em>. In 2016, <em>Wings</em> and <em>"Blood Sweat & Tears"</em> brought mainstream international recognition, entering the Billboard 200 at #26.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-panel">
+              <span class="timeline-year">2017 — 2019</span>
+              <h3>Love Yourself & Global Phenomenon</h3>
+              <p>Won Top Social Artist at the BBMAs. <em>Love Yourself: Tear</em> became the first South Korean album to peak at #1 on the US Billboard 200, followed by selling out Wembley Stadium in London.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-panel">
+              <span class="timeline-year">2020 — 2021</span>
+              <h3>Billboard Hot 100 Dominance</h3>
+              <p>Released <em>"Dynamite"</em>, making history as the first all-South Korean act to hit #1 on the Billboard Hot 100. Followed with #1 smashes <em>"Life Goes On"</em>, <em>"Butter"</em>, and multiple Grammy nominations.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-panel">
+              <span class="timeline-year">2022 & Beyond</span>
+              <h3>Proof & Chapter 2</h3>
+              <p>Released anthology record <em>Proof</em> marking 9 historic years. Members commenced chart-topping solo albums and completed their national service ahead of their global reunion.</p>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="timeline-item">
-        <div class="timeline-date">2017 – 2018</div>
-        <div class="timeline-content">
-          <h3>Love Yourself & Global Breakthrough</h3>
-          <p>BTS won Top Social Artist at the Billboard Music Awards in 2017. <em>Love Yourself: Tear</em> (2018) became the first album by a Korean act to top the US Billboard 200, followed by a sold-out worldwide stadium tour.</p>
+    <!-- Achievements -->
+    <section id="achievements" class="section-wrap">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Record Breaking</span>
+          <h2>Historic Accolades</h2>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="stat-number">6</div>
+            <div class="stat-label">Billboard Hot 100 #1s</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">6</div>
+            <div class="stat-label">Billboard 200 #1 Albums</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">25+</div>
+            <div class="stat-label">Guinness World Records</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Grammy Nominations</div>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="glass-card">
+            <h3>Historic Chart Records</h3>
+            <p>First South Korean act to top both the Billboard Hot 100 and Artist 100 simultaneously. Also the first group since The Beatles to earn three #1 albums on the Billboard 200 in less than a year.</p>
+          </div>
+
+          <div class="glass-card">
+            <h3>Global Stadium Footprint</h3>
+            <p>First Asian act in history to headline and sell out London's Wembley Stadium, the Rose Bowl in California, and Citi Field in New York, demonstrating unprecedented worldwide appeal.</p>
+          </div>
+
+          <div class="glass-card">
+            <h3>Cultural Diplomatic Merits</h3>
+            <p>Youngest recipients of South Korea's prestigious Order of Cultural Merit, and appointed Special Presidential Envoys for Future Generations and Culture.</p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="timeline-item">
-        <div class="timeline-date">2020 – 2021</div>
-        <div class="timeline-content">
-          <h3>Billboard Hot 100 #1s & English Hits</h3>
-          <p>BTS released <em>"Dynamite"</em>, making them the first all-South Korean act to reach #1 on the US Billboard Hot 100. They followed this with historic chart-toppers <em>"Life Goes On"</em>, <em>"Butter"</em>, and <em>"Permission to Dance"</em>, earning multiple Grammy nominations.</p>
+    <!-- Members -->
+    <section id="members" class="section-wrap">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">The Septet</span>
+          <h2>Meet The Members</h2>
+        </div>
+
+        <div class="members-grid">
+          <div class="member-card">
+            <div class="member-avatar">🐨</div>
+            <h3>RM</h3>
+            <div class="member-realname">Kim Namjoon</div>
+            <div class="member-role">Leader &bull; Main Rapper &bull; Producer</div>
+          </div>
+
+          <div class="member-card">
+            <div class="member-avatar">🐹</div>
+            <h3>Jin</h3>
+            <div class="member-realname">Kim Seokjin</div>
+            <div class="member-role">Sub Vocalist &bull; Visual</div>
+          </div>
+
+          <div class="member-card">
+            <div class="member-avatar">🐱</div>
+            <h3>SUGA</h3>
+            <div class="member-realname">Min Yoongi / Agust D</div>
+            <div class="member-role">Lead Rapper &bull; Producer</div>
+          </div>
+
+          <div class="member-card">
+            <div class="member-avatar">🐿️</div>
+            <h3>j-hope</h3>
+            <div class="member-realname">Jung Hoseok</div>
+            <div class="member-role">Main Dancer &bull; Sub Rapper</div>
+          </div>
+
+          <div class="member-card">
+            <div class="member-avatar">🐥</div>
+            <h3>Jimin</h3>
+            <div class="member-realname">Park Jimin</div>
+            <div class="member-role">Lead Vocalist &bull; Main Dancer</div>
+          </div>
+
+          <div class="member-card">
+            <div class="member-avatar">🐻</div>
+            <h3>V</h3>
+            <div class="member-realname">Kim Taehyung</div>
+            <div class="member-role">Sub Vocalist &bull; Visual</div>
+          </div>
+
+          <div class="member-card">
+            <div class="member-avatar">🐰</div>
+            <h3>Jung Kook</h3>
+            <div class="member-realname">Jeon Jungkook</div>
+            <div class="member-role">Main Vocalist &bull; Lead Dancer &bull; Center</div>
+          </div>
         </div>
       </div>
-
-      <div class="timeline-item">
-        <div class="timeline-date">2022 & Beyond</div>
-        <div class="timeline-content">
-          <h3>Anthology & Chapter 2</h3>
-          <p>Released the anthology album <em>Proof</em> celebrating 9 years together. Members embarked on acclaimed solo albums, world tours, and completed mandatory military service, preparing for a grand reunion.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Achievements Section -->
-  <section id="achievements" class="content-section">
-    <div class="section-header">
-      <span class="section-tag">Accolades</span>
-      <h2>Historic Achievements</h2>
-    </div>
-
-    <div class="stats-grid">
-      <div class="stat-card">
-        <h4>6</h4>
-        <p>Billboard Hot 100 #1 Hits</p>
-      </div>
-      <div class="stat-card">
-        <h4>6</h4>
-        <p>Billboard 200 #1 Albums</p>
-      </div>
-      <div class="stat-card">
-        <h4>25+</h4>
-        <p>Guinness World Records</p>
-      </div>
-      <div class="stat-card">
-        <h4>5</h4>
-        <p>Grammy Award Nominations</p>
-      </div>
-    </div>
-
-    <div class="cards-grid">
-      <div class="info-card">
-        <h3>Billboard Dominance</h3>
-        <p>First all-South Korean act to top both the Billboard Hot 100 and Artist 100 simultaneously. Also the first group since The Beatles to earn three #1 albums on the Billboard 200 in less than a year.</p>
-      </div>
-
-      <div class="info-card">
-        <h3>Global Stadium Tours</h3>
-        <p>First Asian act to headline and sell out London's Wembley Stadium, the Rose Bowl in California, and Citi Field in New York, demonstrating unprecedented global ticket-selling power.</p>
-      </div>
-
-      <div class="info-card">
-        <h3>Cultural Merits</h3>
-        <p>Youngest-ever recipients of South Korea's Order of Cultural Merit awarded by the President, acknowledging their contribution to spreading Korean culture and language across the globe.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Members Section -->
-  <section id="members" class="content-section dark-alt">
-    <div class="section-header">
-      <span class="section-tag">The 7</span>
-      <h2>Members</h2>
-    </div>
-
-    <div class="members-grid">
-      <div class="member-pill">
-        <h4>RM</h4>
-        <p>Kim Namjoon &bull; Leader & Main Rapper</p>
-      </div>
-      <div class="member-pill">
-        <h4>Jin</h4>
-        <p>Kim Seokjin &bull; Sub Vocalist</p>
-      </div>
-      <div class="member-pill">
-        <h4>SUGA</h4>
-        <p>Min Yoongi &bull; Lead Rapper & Producer</p>
-      </div>
-      <div class="member-pill">
-        <h4>j-hope</h4>
-        <p>Jung Hoseok &bull; Main Dancer & Sub Rapper</p>
-      </div>
-      <div class="member-pill">
-        <h4>Jimin</h4>
-        <p>Park Jimin &bull; Lead Vocalist & Main Dancer</p>
-      </div>
-      <div class="member-pill">
-        <h4>V</h4>
-        <p>Kim Taehyung &bull; Sub Vocalist & Visual</p>
-      </div>
-      <div class="member-pill">
-        <h4>Jung Kook</h4>
-        <p>Jeon Jungkook &bull; Main Vocalist & Center</p>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
-    <p>Apobangpo (아포방포) &bull; Borahae (보라해) 💜</p>
-    <p class="copyright">BTS Anthology Tribute Site &bull; Built with HTML & CSS</p>
+    <p class="borahae-text">Borahae &bull; I Purple You 💜</p>
+    <p class="copyright">BTS Anthology Tribute Site &bull; Hosted on GitHub Pages</p>
   </footer>
 
 </body>
